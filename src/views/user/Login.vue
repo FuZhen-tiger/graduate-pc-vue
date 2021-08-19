@@ -2,16 +2,16 @@
   <div class="login">
     <div class="container">
       <el-form
-      v-model="loginForm"
+      :model="loginForm"
       :rules="rules"
       ref="loginForm"
       class="login-form"
       >
         <el-form-item prop='userName'>
-          <el-input v-model="loginForm.userName" placeholder="账号" clearable ></el-input>
+          <el-input v-model.trim="loginForm.userName" placeholder="账号" clearable ></el-input>
         </el-form-item>
         <el-form-item prop='password'>
-          <el-input v-model="loginForm.password" placeholder="密码" clearable ></el-input>
+          <el-input v-model.trim="loginForm.password" placeholder="密码" clearable ></el-input>
         </el-form-item>
         <el-form-item props="userType">
           <el-radio-group v-model="loginForm.userType">
@@ -21,7 +21,7 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item>
-          <el-button class="login-btn" type="primary">登录</el-button>
+          <el-button class="login-btn" type="primary" @click="submitForm('loginForm')">登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -46,6 +46,19 @@ export default {
           {required:true,message:'请输入账号',trigger:'blur'},
         ]
       }
+    }
+  },
+  methods:{
+    submitForm(formName){
+      console.log(this.$refs[formName])
+      this.$refs[formName].validate((valid) => {
+        console.log('111111*********')
+        if (valid) {
+          alert('submit!')
+        } else {
+          alert('error!')
+        }
+      });
     }
   }
 }
