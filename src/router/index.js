@@ -16,6 +16,11 @@ let defaultRoutes=[
     component:()=>import ('@/views/user/Login'),
     
     meta:{ title:'登录'}
+  },
+  {
+    path:'/main',
+    name:'main',
+    component:()=>import ('@/views/content/index'),
   }
 ]
 

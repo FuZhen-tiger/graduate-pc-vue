@@ -1,4 +1,4 @@
-# graduate
+# graduat
 
 ## Project setup
 ```
